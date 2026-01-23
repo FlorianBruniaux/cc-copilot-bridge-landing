@@ -142,5 +142,12 @@ window.SEARCH_DOCS = [
     title: 'Pricing & Limits',
     content: 'pricing limits plans copilot pro business enterprise multiplier quota',
     url: '#pricing'
+  },
+  {
+    id: 'd4',
+    type: 'doc',
+    title: 'Security Guide',
+    content: 'security ollama vulnerabilities air-gapped protocol hardening gdpr hipaa pci-dss compliance',
+    url: 'https://github.com/FlorianBruniaux/cc-copilot-bridge/blob/main/docs/SECURITY.md'
   }
 ];

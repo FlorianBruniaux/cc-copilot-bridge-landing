@@ -659,6 +659,23 @@ section {
     margin-bottom: var(--space-sm);
 }
 
+.security-docs-link {
+    margin-top: var(--space-lg);
+    padding: var(--space-md);
+    background-color: var(--bg-tertiary);
+    border-radius: var(--border-radius);
+    border-left: 3px solid var(--accent);
+}
+
+.security-docs-link a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.security-docs-link a:hover {
+    text-decoration: underline;
+}
+
 /* ============================================
    Footer
    ============================================ */
