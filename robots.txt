@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://florianbruniaux.github.io/cc-copilot-bridge-landing/sitemap.xml

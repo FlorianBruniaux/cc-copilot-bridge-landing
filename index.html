@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cc-copilot-bridge - Multi-Provider Router for Claude Code CLI</title>
+  <meta name="description" content="Route Claude Code through Anthropic, GitHub Copilot (via copilot-api), or Ollama local. Switch providers with 3-character aliases. 25+ models available.">
+
+  <!-- SEO -->
+  <link rel="canonical" href="https://florianbruniaux.github.io/cc-copilot-bridge-landing/">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Florian Bruniaux">
+  <meta name="keywords" content="Claude Code, copilot-api, GitHub Copilot, Anthropic, Ollama, multi-provider, AI coding, CLI">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="cc-copilot-bridge - Multi-Provider Router for Claude Code CLI">
+  <meta property="og:description" content="Switch between Anthropic, GitHub Copilot, or Ollama with 3-character aliases. Use your Copilot subscription with Claude Code.">
+  <meta property="og:url" content="https://florianbruniaux.github.io/cc-copilot-bridge-landing/">
+  <meta property="og:site_name" content="cc-copilot-bridge">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="cc-copilot-bridge - Multi-Provider Router">
+  <meta name="twitter:description" content="Route Claude Code through multiple AI providers with simple aliases.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "cc-copilot-bridge",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "macOS, Linux",
+    "description": "Multi-provider router for Claude Code CLI. Switch between Anthropic, GitHub Copilot, or Ollama with simple aliases.",
+    "url": "https://github.com/FlorianBruniaux/cc-copilot-bridge",
+    "author": {
+      "@type": "Person",
+      "name": "Florian Bruniaux"
+    },
+    "license": "https://opensource.org/licenses/MIT",
+    "softwareVersion": "1.4.0"
+  }
+  </script>
+</head>
+<body>
+  <!-- Skip Link -->
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Risk Banner (Above Fold) -->
+  <div class="risk-banner" role="alert">
+    <div class="container">
+      <span class="risk-icon">⚠️</span>
+      <span class="risk-text">
+        <strong>Risk Disclosure:</strong> Uses copilot-api (reverse-engineered). Not officially supported. May violate GitHub ToS.
+      </span>
+      <a href="#risk-disclosure" class="risk-link">Learn more →</a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav" aria-label="Main navigation">
+        <!-- Logo -->
+        <a href="/" class="logo">
+          <span class="logo-icon">>_</span>
+          <span class="logo-text">cc-copilot-bridge</span>
+        </a>
+
+        <!-- Navigation Links -->
+        <div class="nav-links">
+          <a href="#providers">Providers</a>
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#install">Install</a>
+          <a href="#faq">FAQ</a>
+        </div>
+
+        <!-- Actions -->
+        <div class="nav-actions">
+          <button class="search-trigger" aria-label="Search (⌘K)">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="m21 21-4.35-4.35"/>
+            </svg>
+            <span>Search</span>
+            <kbd>⌘K</kbd>
+          </button>
+          <a href="https://github.com/FlorianBruniaux/cc-copilot-bridge" class="btn btn-github-star" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/>
+            </svg>
+            <span class="btn-github-text">Star</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <!-- Badges -->
+        <div class="hero-badges">
+          <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT License">
+          <img src="https://img.shields.io/github/v/tag/FlorianBruniaux/cc-copilot-bridge?label=version" alt="Version">
+          <img src="https://img.shields.io/badge/Platform-macOS%20%7C%20Linux-blue.svg" alt="Platform">
+          <img src="https://img.shields.io/badge/Shell-Bash-green.svg" alt="Bash">
+        </div>
+
+        <!-- Title -->
+        <h1 class="hero-title">Multi-Provider Router for Claude Code</h1>
+
+        <!-- Tagline -->
+        <p class="hero-tagline">
+          Switch between Anthropic, GitHub Copilot, or Ollama with 3 characters.
+          Use your Copilot subscription with Claude Code CLI.
+        </p>
+
+        <!-- Stats -->
+        <div class="hero-stats">
+          <span class="stat"><strong>3</strong> providers</span>
+          <span class="stat"><strong>25+</strong> models</span>
+          <span class="stat"><strong>30s</strong> install</span>
+        </div>
+
+        <!-- CTAs -->
+        <div class="hero-ctas">
+          <a href="#install" class="btn btn-primary">Quick Start</a>
+          <a href="https://github.com/FlorianBruniaux/cc-copilot-bridge" class="btn btn-secondary" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture" class="architecture">
+      <div class="container">
+        <h2 class="section-title">How It Works</h2>
+        <div class="architecture-diagram">
+          <pre class="ascii-diagram">
+┌─────────────────────────────────────────────────┐
+│           Claude Code CLI                       │
+│         (Anthropic's CLI tool)                  │
+└─────────────────┬───────────────────────────────┘
+                  │
+        ┌─────────▼──────────┐
+        │  cc-copilot-bridge │  ◄─── This Tool
+        └─────────┬──────────┘
+                  │
+    ┌─────────────┼─────────────┐
+    │             │             │
+┌───▼────┐  ┌─────▼──────┐  ┌───▼────┐
+│ Direct │  │  Copilot   │  │ Ollama │
+│  API   │  │   Bridge   │  │ Local  │
+└────────┘  └────────────┘  └────────┘
+Anthropic    GitHub Copilot   Self-hosted
+Pay-per-token Premium requests Free (offline)
+          </pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Providers Section -->
+    <section id="providers" class="providers">
+      <div class="container">
+        <h2 class="section-title">Three Providers, One Interface</h2>
+
+        <div class="providers-grid">
+          <!-- Anthropic Direct -->
+          <div class="provider-card anthropic">
+            <div class="provider-header">
+              <div class="provider-icon">🎯</div>
+              <div>
+                <h3 class="provider-name">Anthropic Direct</h3>
+                <code class="provider-command">ccd</code>
+              </div>
+            </div>
+            <p class="provider-desc">
+              Official Anthropic API. Maximum quality for production code review, security audits, and critical decisions.
+            </p>
+            <div class="provider-meta">
+              <span>💰 Pay-per-token</span>
+              <span>🔒 Official API</span>
+            </div>
+          </div>
+
+          <!-- GitHub Copilot -->
+          <div class="provider-card copilot">
+            <div class="provider-header">
+              <div class="provider-icon">🚀</div>
+              <div>
+                <h3 class="provider-name">GitHub Copilot</h3>
+                <code class="provider-command">ccc</code>
+              </div>
+            </div>
+            <p class="provider-desc">
+              Use your Copilot subscription with Claude Code. Access Claude, GPT, and Gemini models via copilot-api proxy.
+            </p>
+            <div class="provider-meta">
+              <span>📊 Premium requests quota</span>
+              <span>⚠️ <a href="#risk-disclosure">ToS risk</a></span>
+            </div>
+          </div>
+
+          <!-- Ollama Local -->
+          <div class="provider-card ollama">
+            <div class="provider-header">
+              <div class="provider-icon">🏠</div>
+              <div>
+                <h3 class="provider-name">Ollama Local</h3>
+                <code class="provider-command">cco</code>
+              </div>
+            </div>
+            <p class="provider-desc">
+              100% offline inference. Perfect for proprietary code, air-gapped environments, and privacy-first workflows.
+            </p>
+            <div class="provider-meta">
+              <span>🆓 Free (local compute)</span>
+              <span>🔐 100% private</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+      <div class="container">
+        <h2 class="section-title">Features</h2>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3 class="feature-title">Instant Switching</h3>
+            <p class="feature-desc">Switch providers with 3 characters. No config changes, no restarts, no environment juggling.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🎨</div>
+            <h3 class="feature-title">25+ Models</h3>
+            <p class="feature-desc">Access Claude, GPT-4.1, GPT-5, Gemini, and local models like Devstral through a unified interface.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🔧</div>
+            <h3 class="feature-title">MCP Profiles</h3>
+            <p class="feature-desc">Auto-generated compatibility profiles exclude problematic MCP servers for strict models like GPT-4.1.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🆔</div>
+            <h3 class="feature-title">Model Identity</h3>
+            <p class="feature-desc">System prompt injection ensures GPT and Gemini correctly identify themselves when running through Claude Code.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🩺</div>
+            <h3 class="feature-title">Health Checks</h3>
+            <p class="feature-desc">Fail-fast validation. Get clear error messages when copilot-api or Ollama isn't running.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">📝</div>
+            <h3 class="feature-title">Session Logging</h3>
+            <p class="feature-desc">Full audit trail in ~/.claude/claude-switch.log. Track provider, model, duration, and exit status.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+      <div class="container">
+        <h2 class="section-title">GitHub Copilot Pricing & Limits</h2>
+
+        <p class="pricing-intro">Using Claude Code via Copilot consumes your <strong>premium request quota</strong>. Usage is NOT unlimited.</p>
+
+        <!-- Plans Table -->
+        <div class="table-wrapper">
+          <table class="pricing-table">
+            <thead>
+              <tr>
+                <th>Plan</th>
+                <th>Monthly Cost</th>
+                <th>Premium Requests</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Copilot Free</strong></td>
+                <td>$0</td>
+                <td>50</td>
+                <td>Limited model access</td>
+              </tr>
+              <tr>
+                <td><strong>Copilot Pro</strong></td>
+                <td>$10</td>
+                <td>300</td>
+                <td>Access to most models</td>
+              </tr>
+              <tr>
+                <td><strong>Copilot Pro+</strong></td>
+                <td>$39</td>
+                <td>1,500</td>
+                <td>Full model access</td>
+              </tr>
+              <tr>
+                <td><strong>Copilot Business</strong></td>
+                <td>$19/user</td>
+                <td>300</td>
+                <td>Organization features</td>
+              </tr>
+              <tr>
+                <td><strong>Copilot Enterprise</strong></td>
+                <td>$39/user</td>
+                <td>1,000</td>
+                <td>Custom models, knowledge bases</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Multipliers Table -->
+        <h3 class="subsection-title">Model Multipliers</h3>
+        <p class="pricing-note">Different models consume different amounts of premium requests:</p>
+
+        <div class="table-wrapper">
+          <table class="pricing-table">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Multiplier</th>
+                <th>Effective Quota (Pro, 300)</th>
+                <th>Effective Quota (Pro+, 1500)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="highlight-row">
+                <td><strong>GPT-4.1, GPT-4o, GPT-5-mini</strong></td>
+                <td><span class="pricing-highlight">0x</span></td>
+                <td><strong>Unlimited</strong></td>
+                <td><strong>Unlimited</strong></td>
+              </tr>
+              <tr>
+                <td>Claude Haiku 4.5</td>
+                <td>0.33x</td>
+                <td>~900 interactions</td>
+                <td>~4,500 interactions</td>
+              </tr>
+              <tr>
+                <td>Claude Sonnet 4.5</td>
+                <td>1x</td>
+                <td>300 interactions</td>
+                <td>1,500 interactions</td>
+              </tr>
+              <tr>
+                <td>Gemini 2.5 Pro</td>
+                <td>1x</td>
+                <td>300 interactions</td>
+                <td>1,500 interactions</td>
+              </tr>
+              <tr>
+                <td><strong>Claude Opus 4.5</strong></td>
+                <td>3x</td>
+                <td>~100 interactions</td>
+                <td>~500 interactions</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pricing-insight">
+          <strong>💡 Key insight:</strong> GPT-4.1 and GPT-4o are <strong>free</strong> (0x multiplier) on paid plans. Use them for routine tasks to preserve premium requests for Claude/Opus.
+        </div>
+      </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section id="screenshots" class="screenshots">
+      <div class="container">
+        <h2 class="section-title">See It In Action</h2>
+
+        <div class="screenshots-tabs">
+          <button class="screenshot-tab active" data-tab="sonnet">Sonnet</button>
+          <button class="screenshot-tab" data-tab="opus">Opus</button>
+          <button class="screenshot-tab" data-tab="gpt">GPT-4.1</button>
+          <button class="screenshot-tab" data-tab="ollama">Ollama</button>
+          <button class="screenshot-tab" data-tab="help">Help</button>
+        </div>
+
+        <div class="screenshot-content active" id="tab-sonnet">
+          <img src="assets/ccc-sonnet.png" alt="Claude Sonnet 4.5 via Copilot" loading="lazy">
+          <p class="screenshot-caption">Claude Sonnet 4.5 (default) via GitHub Copilot</p>
+        </div>
+
+        <div class="screenshot-content" id="tab-opus">
+          <img src="assets/ccc-opus.png" alt="Claude Opus 4.5 via Copilot" loading="lazy">
+          <p class="screenshot-caption">Claude Opus 4.5 (premium, 3x multiplier)</p>
+        </div>
+
+        <div class="screenshot-content" id="tab-gpt">
+          <img src="assets/ccc-gpt.png" alt="GPT-4.1 via Copilot" loading="lazy">
+          <p class="screenshot-caption">GPT-4.1 (free, 0x multiplier)</p>
+        </div>
+
+        <div class="screenshot-content" id="tab-ollama">
+          <img src="assets/cco.png" alt="Ollama Local" loading="lazy">
+          <p class="screenshot-caption">Ollama Local (100% offline)</p>
+        </div>
+
+        <div class="screenshot-content" id="tab-help">
+          <img src="assets/claude-switch-help.png" alt="claude-switch help" loading="lazy">
+          <p class="screenshot-caption">Full command reference</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Install Section -->
+    <section id="install" class="install">
+      <div class="container">
+        <h2 class="section-title">Quick Start</h2>
+
+        <div class="install-hero">
+          <p class="install-intro">Get started in 30 seconds:</p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">bash</span>
+              <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy code">📋 Copy</button>
+            </div>
+            <pre><code>curl -fsSL https://raw.githubusercontent.com/FlorianBruniaux/cc-copilot-bridge/main/install.sh | bash
+source ~/.zshrc  # or ~/.bashrc</code></pre>
+          </div>
+        </div>
+
+        <div class="install-steps">
+          <h3>Setup Aliases</h3>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">bash</span>
+              <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy code">📋 Copy</button>
+            </div>
+            <pre><code># Add to ~/.bash_aliases or ~/.zshrc
+alias ccd='claude-switch direct'      # Anthropic API (paid)
+alias ccc='claude-switch copilot'     # GitHub Copilot (quota)
+alias cco='claude-switch ollama'      # Ollama Local (offline)
+alias ccs='claude-switch status'      # Check all providers
+
+# Model shortcuts
+alias ccc-gpt='COPILOT_MODEL=gpt-4.1 claude-switch copilot'
+alias ccc-opus='COPILOT_MODEL=claude-opus-4.5 claude-switch copilot'</code></pre>
+          </div>
+        </div>
+
+        <div class="install-usage">
+          <h3>First Usage</h3>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">bash</span>
+              <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy code">📋 Copy</button>
+            </div>
+            <pre><code># Start with Copilot (uses your subscription)
+ccc
+
+# Switch models on-the-fly
+COPILOT_MODEL=gpt-4.1 ccc         # GPT-4.1 (free!)
+COPILOT_MODEL=claude-opus-4.5 ccc # Opus (3x quota)
+
+# Check provider status
+ccs</code></pre>
+          </div>
+        </div>
+
+        <p class="install-more">
+          <a href="https://github.com/FlorianBruniaux/cc-copilot-bridge/blob/main/QUICKSTART.md" target="_blank" rel="noopener">Full installation guide →</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Risk Disclosure Section -->
+    <section id="risk-disclosure" class="risk-section">
+      <div class="container">
+        <h2 class="section-title">⚠️ Risk Disclosure</h2>
+
+        <div class="risk-disclosure">
+          <h3>Terms of Service Considerations</h3>
+          <p>This project uses <a href="https://github.com/ericc-ch/copilot-api" target="_blank" rel="noopener">copilot-api</a>, a community tool that reverse-engineers GitHub Copilot's API.</p>
+
+          <h4>Important Disclaimers</h4>
+          <ul>
+            <li><strong>Not officially supported:</strong> copilot-api is not endorsed by GitHub, Microsoft, Anthropic, or any AI provider</li>
+            <li><strong>ToS risk:</strong> Using third-party proxies to access Copilot may violate GitHub Copilot Terms of Service</li>
+            <li><strong>Account suspension:</strong> GitHub reserves the right to suspend accounts for ToS violations without prior notice</li>
+            <li><strong>API changes:</strong> This tool may stop working at any time if providers change their APIs</li>
+            <li><strong>No guarantees:</strong> The authors provide no warranty and accept no liability for account suspension</li>
+          </ul>
+
+          <h4>Recommendations</h4>
+          <div class="table-wrapper">
+            <table class="pricing-table">
+              <thead>
+                <tr>
+                  <th>Use Case</th>
+                  <th>Recommended Provider</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Production code</td>
+                  <td>Anthropic Direct (<code>ccd</code>) - Official API, no ToS risk</td>
+                </tr>
+                <tr>
+                  <td>Sensitive/proprietary code</td>
+                  <td>Ollama Local (<code>cco</code>) - 100% offline, no cloud</td>
+                </tr>
+                <tr>
+                  <td>Daily development</td>
+                  <td>Copilot (<code>ccc</code>) - Understand the risks first</td>
+                </tr>
+                <tr>
+                  <td>Risk-averse users</td>
+                  <td>Avoid copilot-api entirely</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+      <div class="container">
+        <h2 class="section-title">FAQ</h2>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary class="faq-question">Is this legal to use?</summary>
+            <div class="faq-answer">
+              <p>Using copilot-api (the Copilot provider) may violate GitHub's Terms of Service. The tool itself is MIT licensed, but how you use it matters. For risk-free usage, use the Anthropic Direct (<code>ccd</code>) or Ollama (<code>cco</code>) providers.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">How much does it cost?</summary>
+            <div class="faq-answer">
+              <p>Depends on the provider: <strong>Copilot</strong> uses your existing subscription quota. <strong>Anthropic Direct</strong> is pay-per-token ($0.015-$75/1M tokens). <strong>Ollama</strong> is free (local compute).</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">Why is GPT-4.1 free on Copilot?</summary>
+            <div class="faq-answer">
+              <p>GitHub assigns a 0x multiplier to GPT-4.1, GPT-4o, and GPT-5-mini on paid plans. This means they don't consume your premium request quota. Use them for routine tasks to save quota for Claude/Opus.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">Does Ollama work offline?</summary>
+            <div class="faq-answer">
+              <p>Yes, 100%. Ollama runs entirely on your machine with no internet required. Perfect for proprietary code, air-gapped environments, and privacy-first workflows.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">What's copilot-api?</summary>
+            <div class="faq-answer">
+              <p><a href="https://github.com/ericc-ch/copilot-api" target="_blank" rel="noopener">copilot-api</a> is a community project that reverse-engineers GitHub Copilot's API. It's the bridge that makes the Copilot provider possible. cc-copilot-bridge is a wrapper that makes it easy to use with Claude Code CLI.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">Which models are available?</summary>
+            <div class="faq-answer">
+              <p><strong>Anthropic:</strong> Claude Opus, Sonnet, Haiku (4.5). <strong>Copilot:</strong> Claude family, GPT-4.1/5, Gemini 2.5 Pro. <strong>Ollama:</strong> Devstral, Granite4, Qwen3-coder, and any model you install locally.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Projects Section -->
+    <section id="related" class="related">
+      <div class="container">
+        <h2 class="section-title">Related Projects</h2>
+
+        <div class="related-grid">
+          <a href="https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/" class="related-card" target="_blank" rel="noopener">
+            <div class="related-icon">📖</div>
+            <h3>Claude Code Ultimate Guide</h3>
+            <p>Comprehensive documentation, tips, and best practices for Claude Code CLI.</p>
+          </a>
+
+          <a href="https://github.com/ericc-ch/copilot-api" class="related-card" target="_blank" rel="noopener">
+            <div class="related-icon">🔌</div>
+            <h3>copilot-api</h3>
+            <p>The GitHub Copilot API proxy that makes the Copilot provider possible.</p>
+          </a>
+
+          <a href="https://ollama.ai/" class="related-card" target="_blank" rel="noopener">
+            <div class="related-icon">🏠</div>
+            <h3>Ollama</h3>
+            <p>Local AI inference platform. Run LLMs on your machine.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <span class="logo-icon">>_</span>
+            <span class="logo-text">cc-copilot-bridge</span>
+          </a>
+          <p class="footer-tagline">Multi-provider routing for Claude Code CLI</p>
+        </div>
+
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="https://github.com/FlorianBruniaux/cc-copilot-bridge" target="_blank" rel="noopener">GitHub</a>
+          <a href="#features">Features</a>
+          <a href="#install">Install</a>
+          <a href="#faq">FAQ</a>
+          <a href="https://github.com/FlorianBruniaux/cc-copilot-bridge/blob/main/docs/README.md" target="_blank" rel="noopener">Docs</a>
+        </nav>
+
+        <div class="footer-meta">
+          <span>MIT License</span>
+          <span>v1.4.0</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Search Modal -->
+  <div id="search-modal" class="search-modal" hidden role="dialog" aria-modal="true" aria-label="Search">
+    <div class="search-modal-backdrop"></div>
+    <div class="search-modal-content">
+      <div class="search-input-wrapper">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input
+          type="text"
+          id="search-input"
+          class="search-input"
+          placeholder="Search features, FAQ..."
+          autocomplete="off"
+          aria-describedby="search-status"
+        >
+        <kbd>ESC</kbd>
+      </div>
+      <ul id="search-results" class="search-results" role="listbox" aria-label="Search results">
+      </ul>
+      <div id="search-status" class="search-status" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="search-data.js"></script>
+  <script src="search.js"></script>
+
+  <!-- Screenshot Tabs -->
+  <script>
+    document.querySelectorAll('.screenshot-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Remove active from all tabs and content
+        document.querySelectorAll('.screenshot-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.screenshot-content').forEach(c => c.classList.remove('active'));
+
+        // Add active to clicked tab and corresponding content
+        tab.classList.add('active');
+        document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+      });
+    });
+
+    // Copy code function
+    async function copyCode(button) {
+      const codeBlock = button.closest('.code-block');
+      const code = codeBlock.querySelector('code').textContent;
+
+      try {
+        await navigator.clipboard.writeText(code);
+        button.textContent = '✓ Copied!';
+        setTimeout(() => {
+          button.textContent = '📋 Copy';
+        }, 2000);
+      } catch (err) {
+        console.error('Copy failed:', err);
+      }
+    }
+  </script>
+</body>
+</html>
