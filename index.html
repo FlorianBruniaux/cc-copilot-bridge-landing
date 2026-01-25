@@ -45,7 +45,7 @@
       "name": "Florian Bruniaux"
     },
     "license": "https://opensource.org/licenses/MIT",
-    "softwareVersion": "1.4.0"
+    "softwareVersion": "1.5.2"
   }
   </script>
 </head>
@@ -247,7 +247,7 @@ Pay-per-token Premium requests Free (offline)
           <div class="feature-card">
             <div class="feature-icon">🎨</div>
             <h3 class="feature-title">25+ Models</h3>
-            <p class="feature-desc">Access Claude, GPT-4.1, GPT-5, Gemini, and local models like Devstral through a unified interface.</p>
+            <p class="feature-desc">Access Claude, GPT-4.1, GPT-5, Gemini, and local models (Devstral 68% SWE-bench, Qwen3 69.6%, Granite4) through a unified interface.</p>
           </div>
 
           <div class="feature-card">
@@ -433,6 +433,18 @@ Pay-per-token Premium requests Free (offline)
         <div class="install-hero">
           <p class="install-intro">Get started in 30 seconds:</p>
 
+          <h3 style="margin-top: 2rem;">Homebrew (Recommended)</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">bash</span>
+              <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy code">📋 Copy</button>
+            </div>
+            <pre><code>brew tap FlorianBruniaux/tap
+brew install cc-copilot-bridge
+eval "$(claude-switch --shell-config)"</code></pre>
+          </div>
+
+          <h3 style="margin-top: 2rem;">Script Install (Alternative)</h3>
           <div class="code-block">
             <div class="code-header">
               <span class="code-lang">bash</span>
@@ -441,6 +453,11 @@ Pay-per-token Premium requests Free (offline)
             <pre><code>curl -fsSL https://raw.githubusercontent.com/FlorianBruniaux/cc-copilot-bridge/main/install.sh | bash
 source ~/.zshrc  # or ~/.bashrc</code></pre>
           </div>
+
+          <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #666;">
+            <strong>Also available:</strong> Debian/Ubuntu (.deb), RHEL/Fedora (.rpm) —
+            <a href="https://github.com/FlorianBruniaux/cc-copilot-bridge/blob/main/docs/PACKAGE-MANAGERS.md" target="_blank" rel="noopener">See all install options →</a>
+          </p>
         </div>
 
         <div class="install-steps">
@@ -591,7 +608,22 @@ ccs</code></pre>
           <details class="faq-item">
             <summary class="faq-question">Which models are available?</summary>
             <div class="faq-answer">
-              <p><strong>Anthropic:</strong> Claude Opus, Sonnet, Haiku (4.5). <strong>Copilot:</strong> Claude family, GPT-4.1/5, Gemini 2.5 Pro. <strong>Ollama:</strong> Devstral, Granite4, Qwen3-coder, and any model you install locally.</p>
+              <p><strong>Anthropic:</strong> Claude Opus, Sonnet, Haiku (4.5).</p>
+              <p><strong>Copilot:</strong> Claude family, GPT-4.1/5, Gemini 2.5 Pro.</p>
+              <p><strong>Ollama (Local):</strong> Devstral-small-2 (68% SWE-bench, best agentic coding), Granite4 (62%, long context), Qwen3-coder (69.6%, needs config), and any model you install.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">Why Devstral over Qwen3-coder for Ollama?</summary>
+            <div class="faq-answer">
+              <p>Qwen3-coder has 1.6% higher SWE-bench (69.6% vs 68%), but Devstral is more reliable in practice:</p>
+              <ul>
+                <li><strong>Architecture:</strong> Devstral = native agentic design vs Qwen3 = post-training bolt-on</li>
+                <li><strong>Practice:</strong> Devstral = "best agentic" confirmed vs Qwen3 = "needs template work"</li>
+                <li><strong>Precedent:</strong> High benchmarks ≠ reliability (Llama3.1:8b = 68% HumanEval but 15% SWE-bench)</li>
+              </ul>
+              <p>SWE-bench measures real GitHub issue resolution with tool calling, not just code completion.</p>
             </div>
           </details>
         </div>
@@ -648,7 +680,7 @@ ccs</code></pre>
 
         <div class="footer-meta">
           <span>MIT License</span>
-          <span>v1.4.0</span>
+          <span>v1.5.2</span>
         </div>
       </div>
     </div>
