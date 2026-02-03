@@ -488,7 +488,12 @@ alias ccc-opus='COPILOT_MODEL=claude-opus-4.5 claude-switch copilot'</code></pre
               <span class="code-lang">bash</span>
               <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy code">📋 Copy</button>
             </div>
-            <pre><code># Start with Copilot (uses your subscription)
+            <pre><code># Terminal 1: Start copilot-api (keep running)
+copilot-api start
+# or start the unified fork
+scripts/launch-unified-fork.sh
+
+# Terminal 2: Use Copilot (uses your subscription)
 ccc
 
 # Switch models on-the-fly
@@ -498,6 +503,10 @@ COPILOT_MODEL=claude-opus-4.5 ccc # Opus (3x quota)
 # Check provider status
 ccs</code></pre>
           </div>
+
+          <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+            <strong>Note:</strong> <code>copilot-api</code> (or the unified fork via <code>scripts/launch-unified-fork.sh</code>) must be running for Copilot mode. Direct (<code>ccd</code>) and Ollama (<code>cco</code>) don't need it.
+          </p>
         </div>
 
         <p class="install-more">
