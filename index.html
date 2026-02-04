@@ -203,7 +203,7 @@ Pay-per-token Premium requests Free (offline)
               </div>
             </div>
             <p class="provider-desc">
-              Use your Copilot subscription with Claude Code. Access Claude, GPT, and Gemini models via copilot-api proxy.
+              Use your Copilot subscription with Claude Code. Access Claude, GPT, and Gemini models via copilot-api proxy. Start the proxy first: <code>copilot-api start</code> or <code>scripts/launch-unified-fork.sh</code>.
             </p>
             <p style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">
               <strong>Setup:</strong> Run <code style="font-size: 0.85rem;">copilot-api start</code> in Terminal 1, then use <code style="font-size: 0.85rem;">ccc</code> in Terminal 2
@@ -491,10 +491,12 @@ alias ccc-opus='COPILOT_MODEL=claude-opus-4.5 claude-switch copilot'</code></pre
               <span class="code-lang">bash</span>
               <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy code">📋 Copy</button>
             </div>
-            <pre><code># Terminal 1: Start copilot-api first (keep running)
+            <pre><code># Terminal 1: Start copilot-api (keep running)
 copilot-api start
+# or start the unified fork
+scripts/launch-unified-fork.sh
 
-# Terminal 2: Start with Copilot (uses your subscription)
+# Terminal 2: Use Copilot (uses your subscription)
 ccc
 
 # Switch models on-the-fly
@@ -506,7 +508,7 @@ ccs</code></pre>
           </div>
 
           <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
-            <strong>Note:</strong> <code>copilot-api</code> must be running for Copilot mode (<code>ccc</code>). Direct (<code>ccd</code>) and Ollama (<code>cco</code>) don't need it.
+            <strong>Note:</strong> <code>copilot-api</code> (or the unified fork via <code>scripts/launch-unified-fork.sh</code>) must be running for Copilot mode. Direct (<code>ccd</code>) and Ollama (<code>cco</code>) don't need it.
           </p>
         </div>
 
@@ -523,7 +525,7 @@ ccs</code></pre>
 
         <div class="risk-disclosure">
           <h3>Terms of Service Considerations</h3>
-          <p>This project uses <a href="https://github.com/ericc-ch/copilot-api" target="_blank" rel="noopener">copilot-api</a>, a community tool that reverse-engineers GitHub Copilot's API.</p>
+          <p>This project uses <a href="https://github.com/ericc-ch/copilot-api" target="_blank" rel="noopener">copilot-api</a>, a community tool that reverse-engineers GitHub Copilot's API. Start the proxy first: <code>copilot-api start</code> or <code>scripts/launch-unified-fork.sh</code>.</p>
 
           <h4>Important Disclaimers</h4>
           <ul>
@@ -611,7 +613,7 @@ ccs</code></pre>
           <details class="faq-item">
             <summary class="faq-question">What's copilot-api?</summary>
             <div class="faq-answer">
-              <p><a href="https://github.com/ericc-ch/copilot-api" target="_blank" rel="noopener">copilot-api</a> is a community project that reverse-engineers GitHub Copilot's API. It's the bridge that makes the Copilot provider possible. cc-copilot-bridge is a wrapper that makes it easy to use with Claude Code CLI.</p>
+              <p><a href="https://github.com/ericc-ch/copilot-api" target="_blank" rel="noopener">copilot-api</a> is a community project that reverse-engineers GitHub Copilot's API. It's the bridge that makes the Copilot provider possible. cc-copilot-bridge is a wrapper that makes it easy to use with Claude Code CLI. Start the proxy first: <code>copilot-api start</code> or <code>scripts/launch-unified-fork.sh</code>.</p>
             </div>
           </details>
 

@@ -37,7 +37,7 @@ window.SEARCH_FEATURES = [
     id: 'f5',
     type: 'feature',
     title: 'Health Checks & Fail-Fast',
-    content: 'health check status fail fast error validation copilot-api ollama',
+    content: 'health check status fail fast error validation copilot-api ollama copilot-api start scripts/launch-unified-fork.sh',
     url: '#features'
   },
   {
@@ -62,7 +62,7 @@ window.SEARCH_PROVIDERS = [
     id: 'p2',
     type: 'provider',
     title: 'GitHub Copilot (ccc)',
-    content: 'github copilot subscription premium requests quota copilot-api',
+    content: 'github copilot subscription premium requests quota copilot-api copilot-api start scripts/launch-unified-fork.sh',
     url: '#providers'
   },
   {
@@ -108,7 +108,7 @@ window.SEARCH_FAQ = [
     id: 'q5',
     type: 'faq',
     title: 'What is copilot-api?',
-    content: 'copilot-api reverse engineer proxy bridge github',
+    content: 'copilot-api reverse engineer proxy bridge github copilot-api start scripts/launch-unified-fork.sh',
     url: '#faq'
   },
   {
