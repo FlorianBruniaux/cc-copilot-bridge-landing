@@ -205,6 +205,9 @@ Pay-per-token Premium requests Free (offline)
             <p class="provider-desc">
               Use your Copilot subscription with Claude Code. Access Claude, GPT, and Gemini models via copilot-api proxy.
             </p>
+            <p style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">
+              <strong>Setup:</strong> Run <code style="font-size: 0.85rem;">copilot-api start</code> in Terminal 1, then use <code style="font-size: 0.85rem;">ccc</code> in Terminal 2
+            </p>
             <div class="provider-meta">
               <span>📊 Premium requests quota</span>
               <span>⚠️ <a href="#risk-disclosure">ToS risk</a></span>
@@ -488,7 +491,10 @@ alias ccc-opus='COPILOT_MODEL=claude-opus-4.5 claude-switch copilot'</code></pre
               <span class="code-lang">bash</span>
               <button class="copy-btn" onclick="copyCode(this)" aria-label="Copy code">📋 Copy</button>
             </div>
-            <pre><code># Start with Copilot (uses your subscription)
+            <pre><code># Terminal 1: Start copilot-api first (keep running)
+copilot-api start
+
+# Terminal 2: Start with Copilot (uses your subscription)
 ccc
 
 # Switch models on-the-fly
@@ -498,6 +504,10 @@ COPILOT_MODEL=claude-opus-4.5 ccc # Opus (3x quota)
 # Check provider status
 ccs</code></pre>
           </div>
+
+          <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+            <strong>Note:</strong> <code>copilot-api</code> must be running for Copilot mode (<code>ccc</code>). Direct (<code>ccd</code>) and Ollama (<code>cco</code>) don't need it.
+          </p>
         </div>
 
         <p class="install-more">
@@ -602,6 +612,22 @@ ccs</code></pre>
             <summary class="faq-question">What's copilot-api?</summary>
             <div class="faq-answer">
               <p><a href="https://github.com/ericc-ch/copilot-api" target="_blank" rel="noopener">copilot-api</a> is a community project that reverse-engineers GitHub Copilot's API. It's the bridge that makes the Copilot provider possible. cc-copilot-bridge is a wrapper that makes it easy to use with Claude Code CLI.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">How do I start copilot-api?</summary>
+            <div class="faq-answer">
+              <p><strong>Terminal 1:</strong> Keep this running</p>
+              <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; margin: 0.5rem 0;"><code>copilot-api start</code></pre>
+
+              <p><strong>Terminal 2:</strong> Use Copilot mode</p>
+              <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; margin: 0.5rem 0;"><code>ccc  # or ccc-opus, ccc-gpt, etc.</code></pre>
+
+              <p><strong>Alternative:</strong> For Codex models (gpt-5.2-codex), use the unified fork:</p>
+              <pre style="background: #f5f5f5; padding: 1rem; border-radius: 4px; margin: 0.5rem 0;"><code>ccunified  # or ~/path/to/cc-copilot-bridge/scripts/launch-unified-fork.sh</code></pre>
+
+              <p>💡 <strong>Tip:</strong> Check if copilot-api is running: <code>ccs</code> (shows status of all providers)</p>
             </div>
           </details>
 
