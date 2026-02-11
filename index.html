@@ -7,7 +7,7 @@
   <meta name="description" content="Route Claude Code through Anthropic, GitHub Copilot (via copilot-api), or Ollama local. Switch providers with 3-character aliases. 25+ models available.">
 
   <!-- SEO -->
-  <link rel="canonical" href="https://florianbruniaux.github.io/cc-copilot-bridge-landing/">
+  <link rel="canonical" href="https://ccbridge.bruniaux.com/">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Florian Bruniaux">
   <meta name="keywords" content="Claude Code, copilot-api, GitHub Copilot, Anthropic, Ollama, multi-provider, AI coding, CLI">
@@ -16,13 +16,19 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="cc-copilot-bridge - Multi-Provider Router for Claude Code CLI">
   <meta property="og:description" content="Switch between Anthropic, GitHub Copilot, or Ollama with 3-character aliases. Use your Copilot subscription with Claude Code.">
-  <meta property="og:url" content="https://florianbruniaux.github.io/cc-copilot-bridge-landing/">
+  <meta property="og:url" content="https://ccbridge.bruniaux.com/">
   <meta property="og:site_name" content="cc-copilot-bridge">
+
+  <!-- Open Graph Image -->
+  <meta property="og:image" content="https://ccbridge.bruniaux.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="cc-copilot-bridge - Multi-Provider Router">
   <meta name="twitter:description" content="Route Claude Code through multiple AI providers with simple aliases.">
+  <meta name="twitter:image" content="https://ccbridge.bruniaux.com/og-image.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -34,18 +40,122 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "cc-copilot-bridge",
-    "applicationCategory": "DeveloperApplication",
-    "operatingSystem": "macOS, Linux",
-    "description": "Multi-provider router for Claude Code CLI. Switch between Anthropic, GitHub Copilot, or Ollama with simple aliases.",
-    "url": "https://github.com/FlorianBruniaux/cc-copilot-bridge",
-    "author": {
-      "@type": "Person",
-      "name": "Florian Bruniaux"
-    },
-    "license": "https://opensource.org/licenses/MIT",
-    "softwareVersion": "1.5.3"
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://ccbridge.bruniaux.com/#webpage",
+        "url": "https://ccbridge.bruniaux.com/",
+        "name": "cc-copilot-bridge - Multi-Provider Router for Claude Code CLI",
+        "datePublished": "2025-06-01",
+        "dateModified": "2026-02-11",
+        "description": "Route Claude Code through Anthropic, GitHub Copilot (via copilot-api), or Ollama local. Switch providers with 3-character aliases. 25+ models available.",
+        "publisher": { "@id": "https://ccbridge.bruniaux.com/#person" },
+        "mainEntityOfPage": { "@id": "https://ccbridge.bruniaux.com/#software" },
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": [".hero-title", ".hero-tagline", ".faq-answer"]
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://ccbridge.bruniaux.com/#software",
+        "name": "cc-copilot-bridge",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "macOS, Linux",
+        "description": "Multi-provider router for Claude Code CLI. Switch between Anthropic, GitHub Copilot, or Ollama with simple aliases.",
+        "url": "https://github.com/FlorianBruniaux/cc-copilot-bridge",
+        "author": { "@id": "https://ccbridge.bruniaux.com/#person" },
+        "license": "https://opensource.org/licenses/MIT",
+        "softwareVersion": "1.5.3",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Multi-provider routing (Anthropic, Copilot, Ollama)",
+          "3-character alias switching",
+          "25+ AI models available",
+          "MCP profile system",
+          "Health checks and fail-fast",
+          "Session logging"
+        ],
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Developers using Claude Code CLI"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://ccbridge.bruniaux.com/#person",
+        "name": "Florian Bruniaux",
+        "url": "https://github.com/FlorianBruniaux"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "cc-copilot-bridge",
+            "item": "https://ccbridge.bruniaux.com/"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is this legal to use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Using copilot-api (the Copilot provider) may violate GitHub's Terms of Service. The tool itself is MIT licensed, but how you use it matters. For risk-free usage, use the Anthropic Direct (ccd) or Ollama (cco) providers."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does it cost?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Depends on the provider: Copilot uses your existing subscription quota. Anthropic Direct is pay-per-token ($0.015-$75/1M tokens). Ollama is free (local compute)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is GPT-4.1 free on Copilot?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "GitHub assigns a 0x multiplier to GPT-4.1, GPT-4o, and GPT-5-mini on paid plans. This means they don't consume your premium request quota."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Ollama work offline?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, 100%. Ollama runs entirely on your machine with no internet required. Perfect for proprietary code, air-gapped environments, and privacy-first workflows."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What's copilot-api?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "copilot-api is a community project that reverse-engineers GitHub Copilot's API. It's the bridge that makes the Copilot provider possible. cc-copilot-bridge is a wrapper that makes it easy to use with Claude Code CLI."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which models are available?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Anthropic: Claude Opus, Sonnet, Haiku (4.5). Copilot: Claude family, GPT-4.1/5, Gemini 2.5 Pro. Ollama (Local): Devstral-small-2 (68% SWE-bench), Granite4 (62%), Qwen3-coder (69.6%), and any model you install."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
 
