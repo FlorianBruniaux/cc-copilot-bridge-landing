@@ -4,7 +4,7 @@ Landing page for [cc-copilot-bridge](https://github.com/FlorianBruniaux/cc-copil
 
 ## Live Site
 
-https://florianbruniaux.github.io/cc-copilot-bridge-landing/
+https://ccbridge.bruniaux.com/
 
 ## Tech Stack
 
@@ -45,7 +45,7 @@ Pushes to `main` automatically deploy to GitHub Pages via `.github/workflows/sta
 ## Related
 
 - [cc-copilot-bridge](https://github.com/FlorianBruniaux/cc-copilot-bridge) - Main project
-- [Claude Code Ultimate Guide](https://florianbruniaux.github.io/claude-code-ultimate-guide-landing/) - Comprehensive Claude Code documentation
+- [Claude Code Ultimate Guide](https://cc.bruniaux.com/) - Comprehensive Claude Code documentation
 
 ## License
 
