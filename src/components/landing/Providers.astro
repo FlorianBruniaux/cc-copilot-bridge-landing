@@ -1,0 +1,120 @@
+---
+// Three provider cards section
+const providers = [
+  {
+    name: 'Anthropic Direct',
+    command: 'ccd',
+    icon: '&#x1F3AF;',
+    desc: 'Official Anthropic API. Maximum quality for production code review, security audits, and critical decisions.',
+    meta: ['&#x1F4B0; Pay-per-token', '&#x1F512; Official API'],
+    accent: 'var(--accent)',
+  },
+  {
+    name: 'GitHub Copilot',
+    command: 'ccc',
+    icon: '&#x1F680;',
+    desc: 'Use your Copilot subscription with Claude Code. Access Claude, GPT, and Gemini models via copilot-api proxy.',
+    setup: 'Run <code>copilot-api start</code> in Terminal 1, then use <code>ccc</code> in Terminal 2',
+    meta: ['&#x1F4CA; Premium requests quota', '&#x26A0;&#xFE0F; <a href="#risk-disclosure">ToS risk</a>'],
+    accent: 'var(--accent-tertiary)',
+  },
+  {
+    name: 'Ollama Local',
+    command: 'cco',
+    icon: '&#x1F3E0;',
+    desc: '100% offline inference. Perfect for proprietary code, air-gapped environments, and privacy-first workflows.',
+    meta: ['&#x1F193; Free (local compute)', '&#x1F510; 100% private'],
+    accent: 'var(--accent-secondary)',
+  },
+]
+---
+
+<section id="providers" class="section">
+  <div class="container">
+    <h2 class="section-title">Three Providers, One Interface</h2>
+
+    <div class="providers-grid">
+      {providers.map((p) => (
+        <div class="feature-card provider-card" style={`--provider-accent: ${p.accent};`}>
+          <div class="provider-header">
+            <div class="provider-icon" set:html={p.icon} />
+            <div>
+              <h3>{p.name}</h3>
+              <code class="provider-command">{p.command}</code>
+            </div>
+          </div>
+          <p class="provider-desc">{p.desc}</p>
+          {p.setup && (
+            <p class="provider-setup">
+              <strong>Setup:</strong> <span set:html={p.setup} />
+            </p>
+          )}
+          <div class="provider-meta">
+            {p.meta.map((m) => (
+              <span set:html={m} />
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .providers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .provider-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .provider-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--provider-accent);
+  }
+
+  .provider-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+  }
+
+  .provider-icon {
+    font-size: 2rem;
+  }
+
+  .provider-command {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.9rem;
+  }
+
+  .provider-desc {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+  }
+
+  .provider-setup {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: var(--space-sm);
+  }
+
+  .provider-meta {
+    display: flex;
+    gap: var(--space-md);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+  }
+</style>

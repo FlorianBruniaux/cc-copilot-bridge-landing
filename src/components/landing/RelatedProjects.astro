@@ -1,0 +1,39 @@
+---
+// Related projects cards
+const projects = [
+  {
+    icon: '&#x1F4D6;',
+    title: 'Claude Code Ultimate Guide',
+    desc: 'Complete documentation, tips, and best practices for Claude Code CLI.',
+    url: 'https://cc.bruniaux.com/',
+  },
+  {
+    icon: '&#x1F4CA;',
+    title: 'ccboard',
+    desc: 'TUI/Web dashboard for Claude Code session management and analytics.',
+    url: 'https://ccboard.bruniaux.com/',
+  },
+  {
+    icon: '&#x26A1;',
+    title: 'RTK',
+    desc: 'CLI token optimizer for Claude Code. 60-90% reduction on dev operations.',
+    url: 'https://www.rtk-ai.app/',
+  },
+]
+---
+
+<section id="related" class="section section--alt">
+  <div class="container">
+    <h2 class="section-title">Related Projects</h2>
+
+    <div class="features-grid">
+      {projects.map((p) => (
+        <a href={p.url} class="feature-card feature-card-link" target="_blank" rel="noopener noreferrer">
+          <span class="feature-icon" set:html={p.icon} />
+          <h3>{p.title}</h3>
+          <p>{p.desc}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

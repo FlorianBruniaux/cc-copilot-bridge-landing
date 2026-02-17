@@ -1,0 +1,116 @@
+---
+import Layout from '../layouts/Layout.astro'
+import RiskBanner from '../components/landing/RiskBanner.astro'
+import HeroBanner from '../components/landing/HeroBanner.astro'
+import Architecture from '../components/landing/Architecture.astro'
+import Providers from '../components/landing/Providers.astro'
+import Features from '../components/landing/Features.astro'
+import Pricing from '../components/landing/Pricing.astro'
+import Screenshots from '../components/landing/Screenshots.astro'
+import Install from '../components/landing/Install.astro'
+import RiskDisclosure from '../components/landing/RiskDisclosure.astro'
+import FaqAccordion from '../components/landing/FaqAccordion.astro'
+import RelatedProjects from '../components/landing/RelatedProjects.astro'
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is this legal to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Using copilot-api (the Copilot provider) may violate GitHub's Terms of Service. The tool itself is MIT licensed, but how you use it matters. For risk-free usage, use the Anthropic Direct (ccd) or Ollama (cco) providers.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "How much does it cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depends on the provider: Copilot uses your existing subscription quota. Anthropic Direct is pay-per-token ($0.015-$75/1M tokens). Ollama is free (local compute).",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "Why is GPT-4.1 free on Copilot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GitHub assigns a 0x multiplier to GPT-4.1, GPT-4o, and GPT-5-mini on paid plans. This means they don't consume your premium request quota.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "Does Ollama work offline?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, 100%. Ollama runs entirely on your machine with no internet required. Perfect for proprietary code, air-gapped environments, and privacy-first workflows.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "What's copilot-api?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "copilot-api is a community project that reverse-engineers GitHub Copilot's API. It's the bridge that makes the Copilot provider possible. cc-copilot-bridge is a wrapper that makes it easy to use with Claude Code CLI.",
+      },
+    },
+    {
+      "@type": "Question",
+      "name": "Which models are available?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Anthropic: Claude Opus, Sonnet, Haiku (4.5). Copilot: Claude family, GPT-4.1/5, Gemini 2.5 Pro. Ollama (Local): Devstral-small-2 (68% SWE-bench), Granite4 (62%), Qwen3-coder (69.6%), and any model you install.",
+      },
+    },
+  ],
+}
+
+const softwareSchema = {
+  "@type": "SoftwareApplication",
+  "@id": "https://ccbridge.bruniaux.com/#software",
+  "name": "cc-copilot-bridge",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "macOS, Linux",
+  "description": "Multi-provider router for Claude Code CLI. Switch between Anthropic, GitHub Copilot, or Ollama with simple aliases.",
+  "url": "https://github.com/FlorianBruniaux/cc-copilot-bridge",
+  "license": "https://opensource.org/licenses/MIT",
+  "softwareVersion": "1.5.3",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+  },
+  "featureList": [
+    "Multi-provider routing (Anthropic, Copilot, Ollama)",
+    "3-character alias switching",
+    "25+ AI models available",
+    "MCP profile system",
+    "Health checks and fail-fast",
+    "Session logging",
+  ],
+}
+---
+
+<Layout
+  title="cc-copilot-bridge - Multi-Provider Router for Claude Code CLI"
+  description="Route Claude Code through Anthropic, GitHub Copilot (via copilot-api), or Ollama local. Switch providers with 3-character aliases. 25+ models available."
+  jsonLd={[faqSchema, softwareSchema]}
+>
+  <RiskBanner />
+  <HeroBanner />
+  <Architecture />
+  <Providers />
+  <Features />
+  <Pricing />
+  <Screenshots />
+  <Install />
+  <RiskDisclosure />
+  <FaqAccordion />
+  <RelatedProjects />
+
+  <!-- Floating Feedback Button -->
+  <a href="https://github.com/FlorianBruniaux/cc-copilot-bridge/issues/new" target="_blank" rel="noopener noreferrer" class="feedback-fab" aria-label="Submit an idea or issue">
+    &#x1F4A1; <span class="feedback-fab-text">Feedback</span>
+  </a>
+</Layout>

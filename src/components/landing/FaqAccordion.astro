@@ -1,0 +1,132 @@
+---
+// 8 FAQ items in accordion format
+const faqItems = [
+  {
+    question: 'Is this legal to use?',
+    answer: '<p>Using copilot-api (the Copilot provider) may violate GitHub\'s Terms of Service. The tool itself is MIT licensed, but how you use it matters. For risk-free usage, use the Anthropic Direct (<code>ccd</code>) or Ollama (<code>cco</code>) providers.</p>',
+  },
+  {
+    question: 'How much does it cost?',
+    answer: '<p>Depends on the provider: <strong>Copilot</strong> uses your existing subscription quota. <strong>Anthropic Direct</strong> is pay-per-token ($0.015-$75/1M tokens). <strong>Ollama</strong> is free (local compute).</p>',
+  },
+  {
+    question: 'Why is GPT-4.1 free on Copilot?',
+    answer: '<p>GitHub assigns a 0x multiplier to GPT-4.1, GPT-4o, and GPT-5-mini on paid plans. This means they don\'t consume your premium request quota. Use them for routine tasks to save quota for Claude/Opus.</p>',
+  },
+  {
+    question: 'Does Ollama work offline?',
+    answer: '<p>Yes, 100%. Ollama runs entirely on your machine with no internet required. Perfect for proprietary code, air-gapped environments, and privacy-first workflows.</p>',
+  },
+  {
+    question: "What's copilot-api?",
+    answer: '<p><a href="https://github.com/ericc-ch/copilot-api" target="_blank" rel="noopener noreferrer">copilot-api</a> is a community project that reverse-engineers GitHub Copilot\'s API. It\'s the bridge that makes the Copilot provider possible. cc-copilot-bridge is a wrapper that makes it easy to use with Claude Code CLI. Start the proxy first: <code>copilot-api start</code> or <code>scripts/launch-unified-fork.sh</code>.</p>',
+  },
+  {
+    question: 'How do I start copilot-api?',
+    answer: `<p><strong>Terminal 1:</strong> Keep this running</p>
+<pre><code>copilot-api start</code></pre>
+<p><strong>Terminal 2:</strong> Use Copilot mode</p>
+<pre><code>ccc  # or ccc-opus, ccc-gpt, etc.</code></pre>
+<p><strong>Alternative:</strong> For Codex models (gpt-5.2-codex), use the unified fork:</p>
+<pre><code>ccunified  # or ~/path/to/cc-copilot-bridge/scripts/launch-unified-fork.sh</code></pre>
+<p>&#x1F4A1; <strong>Tip:</strong> Check if copilot-api is running: <code>ccs</code> (shows status of all providers)</p>`,
+  },
+  {
+    question: 'Which models are available?',
+    answer: '<p><strong>Anthropic:</strong> Claude Opus, Sonnet, Haiku (4.5).</p><p><strong>Copilot:</strong> Claude family, GPT-4.1/5, Gemini 2.5 Pro.</p><p><strong>Ollama (Local):</strong> Devstral-small-2 (68% SWE-bench, best agentic coding), Granite4 (62%, long context), Qwen3-coder (69.6%, needs config), and any model you install.</p>',
+  },
+  {
+    question: 'Why Devstral over Qwen3-coder for Ollama?',
+    answer: `<p>Qwen3-coder has 1.6% higher SWE-bench (69.6% vs 68%), but Devstral is more reliable in practice:</p>
+<ul>
+<li><strong>Architecture:</strong> Devstral = native agentic design vs Qwen3 = post-training bolt-on</li>
+<li><strong>Practice:</strong> Devstral = "best agentic" confirmed vs Qwen3 = "needs template work"</li>
+<li><strong>Precedent:</strong> High benchmarks &ne; reliability (Llama3.1:8b = 68% HumanEval but 15% SWE-bench)</li>
+</ul>
+<p>SWE-bench measures real GitHub issue resolution with tool calling, not just code completion.</p>`,
+  },
+]
+---
+
+<section id="faq" class="section">
+  <div class="container">
+    <h2 class="section-title">FAQ</h2>
+
+    <div class="faq-list">
+      {faqItems.map((item) => (
+        <details class="faq-item">
+          <summary class="faq-question">{item.question}</summary>
+          <div class="faq-answer" set:html={item.answer} />
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--space-md);
+    overflow: hidden;
+  }
+
+  .faq-question {
+    padding: var(--space-md) var(--space-lg);
+    cursor: pointer;
+    font-weight: 500;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-primary);
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question::after {
+    content: '+';
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    transition: transform var(--transition-fast);
+  }
+
+  .faq-item[open] .faq-question::after {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    padding: 0 var(--space-lg) var(--space-lg);
+    color: var(--text-secondary);
+  }
+
+  .faq-answer :global(pre) {
+    background: var(--bg-tertiary);
+    padding: var(--space-md);
+    border-radius: var(--border-radius);
+    margin: var(--space-sm) 0;
+    overflow-x: auto;
+  }
+
+  .faq-answer :global(pre code) {
+    background: none;
+    padding: 0;
+  }
+
+  .faq-answer :global(ul) {
+    list-style: disc;
+    padding-left: var(--space-xl);
+    margin: var(--space-sm) 0;
+  }
+
+  .faq-answer :global(li) {
+    margin-bottom: var(--space-xs);
+  }
+</style>

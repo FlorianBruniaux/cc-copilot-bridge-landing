@@ -1,0 +1,174 @@
+---
+// GitHub Copilot Quotas & Limits section
+---
+
+<section id="pricing" class="section">
+  <div class="container">
+    <h2 class="section-title">GitHub Copilot Quotas &amp; Limits</h2>
+
+    <p class="pricing-intro"><strong>cc-copilot-bridge is free and open-source (MIT).</strong> This section explains GitHub Copilot's quota system, which applies when using the <code>ccc</code> provider.</p>
+
+    <!-- Plans Table -->
+    <div class="table-wrapper">
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th>Plan</th>
+            <th>Monthly Cost</th>
+            <th>Premium Requests</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Copilot Free</strong></td>
+            <td>$0</td>
+            <td>50</td>
+            <td>Limited model access</td>
+          </tr>
+          <tr>
+            <td><strong>Copilot Pro</strong></td>
+            <td>$10</td>
+            <td>300</td>
+            <td>Access to most models</td>
+          </tr>
+          <tr>
+            <td><strong>Copilot Pro+</strong></td>
+            <td>$39</td>
+            <td>1,500</td>
+            <td>Full model access</td>
+          </tr>
+          <tr>
+            <td><strong>Copilot Business</strong></td>
+            <td>$19/user</td>
+            <td>300</td>
+            <td>Organization features</td>
+          </tr>
+          <tr>
+            <td><strong>Copilot Enterprise</strong></td>
+            <td>$39/user</td>
+            <td>1,000</td>
+            <td>Custom models, knowledge bases</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Multipliers Table -->
+    <h3 class="subsection-title">Model Multipliers</h3>
+    <p class="pricing-note">Different models consume different amounts of premium requests:</p>
+
+    <div class="table-wrapper">
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Multiplier</th>
+            <th>Effective Quota (Pro, 300)</th>
+            <th>Effective Quota (Pro+, 1500)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row">
+            <td><strong>GPT-4.1, GPT-4o, GPT-5-mini</strong></td>
+            <td><span class="pricing-highlight">0x</span></td>
+            <td><strong>Unlimited</strong></td>
+            <td><strong>Unlimited</strong></td>
+          </tr>
+          <tr>
+            <td>Claude Haiku 4.5</td>
+            <td>0.33x</td>
+            <td>~900 interactions</td>
+            <td>~4,500 interactions</td>
+          </tr>
+          <tr>
+            <td>Claude Sonnet 4.5</td>
+            <td>1x</td>
+            <td>300 interactions</td>
+            <td>1,500 interactions</td>
+          </tr>
+          <tr>
+            <td>Gemini 2.5 Pro</td>
+            <td>1x</td>
+            <td>300 interactions</td>
+            <td>1,500 interactions</td>
+          </tr>
+          <tr>
+            <td><strong>Claude Opus 4.5</strong></td>
+            <td>3x</td>
+            <td>~100 interactions</td>
+            <td>~500 interactions</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pricing-insight">
+      <strong>&#x1F4A1; Key insight:</strong> GPT-4.1 and GPT-4o are <strong>free</strong> (0x multiplier) on paid plans. Use them for routine tasks to preserve premium requests for Claude/Opus.
+    </div>
+  </div>
+</section>
+
+<style>
+  .pricing-intro {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-xl);
+  }
+
+  .table-wrapper {
+    overflow-x: auto;
+    margin-bottom: var(--space-xl);
+  }
+
+  .pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--space-lg) 0;
+  }
+
+  .pricing-table th,
+  .pricing-table td {
+    padding: var(--space-md);
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .pricing-table th {
+    background-color: var(--bg-secondary);
+    font-weight: 600;
+  }
+
+  .pricing-table tr:hover {
+    background-color: var(--bg-secondary);
+  }
+
+  .pricing-highlight {
+    color: var(--accent-secondary);
+    font-weight: 600;
+  }
+
+  .highlight-row {
+    background-color: rgba(34, 197, 94, 0.08);
+  }
+
+  .subsection-title {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-md);
+    color: var(--text-primary);
+  }
+
+  .pricing-note {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+  }
+
+  .pricing-insight {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent-secondary);
+    padding: var(--space-lg);
+    border-radius: var(--border-radius);
+    margin-top: var(--space-xl);
+  }
+</style>

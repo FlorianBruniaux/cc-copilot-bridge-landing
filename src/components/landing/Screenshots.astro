@@ -1,0 +1,113 @@
+---
+// 5-tab screenshot gallery
+const tabs = [
+  { id: 'sonnet', label: 'Sonnet', src: '/assets/ccc-sonnet.png', alt: 'Claude Sonnet 4.5 via Copilot', caption: 'Claude Sonnet 4.5 (default) via GitHub Copilot' },
+  { id: 'opus', label: 'Opus', src: '/assets/ccc-opus.png', alt: 'Claude Opus 4.5 via Copilot', caption: 'Claude Opus 4.5 (premium, 3x multiplier)' },
+  { id: 'gpt', label: 'GPT-4.1', src: '/assets/ccc-gpt.png', alt: 'GPT-4.1 via Copilot', caption: 'GPT-4.1 (free, 0x multiplier)' },
+  { id: 'ollama', label: 'Ollama', src: '/assets/cco.png', alt: 'Ollama Local', caption: 'Ollama Local (100% offline)' },
+  { id: 'help', label: 'Help', src: '/assets/claude-switch-help.png', alt: 'claude-switch help', caption: 'Full command reference' },
+]
+---
+
+<section id="screenshots" class="section section--alt">
+  <div class="container">
+    <h2 class="section-title">See It In Action</h2>
+
+    <div class="screenshots-tabs" role="tablist" aria-label="Screenshots">
+      {tabs.map((tab, i) => (
+        <button
+          class:list={['screenshot-tab', { active: i === 0 }]}
+          data-tab={tab.id}
+          role="tab"
+          aria-selected={i === 0 ? 'true' : 'false'}
+          aria-controls={`tab-${tab.id}`}
+        >
+          {tab.label}
+        </button>
+      ))}
+    </div>
+
+    {tabs.map((tab, i) => (
+      <div
+        class:list={['screenshot-content', { active: i === 0 }]}
+        id={`tab-${tab.id}`}
+        role="tabpanel"
+      >
+        <img src={tab.src} alt={tab.alt} loading="lazy" />
+        <p class="screenshot-caption">{tab.caption}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .screenshots-tabs {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xl);
+    flex-wrap: wrap;
+  }
+
+  .screenshot-tab {
+    padding: var(--space-sm) var(--space-md);
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-family: inherit;
+    font-size: 0.9rem;
+  }
+
+  .screenshot-tab:hover,
+  .screenshot-tab.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background-color: rgba(249, 115, 22, 0.08);
+  }
+
+  .screenshot-content {
+    display: none;
+    text-align: center;
+  }
+
+  .screenshot-content.active {
+    display: block;
+  }
+
+  .screenshot-content img {
+    max-width: 100%;
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--border);
+  }
+
+  .screenshot-caption {
+    text-align: center;
+    color: var(--text-muted);
+    margin-top: var(--space-md);
+    font-size: 0.9rem;
+  }
+</style>
+
+<script>
+  function initScreenshotTabs() {
+    document.querySelectorAll('.screenshot-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.screenshot-tab').forEach(t => {
+          t.classList.remove('active')
+          t.setAttribute('aria-selected', 'false')
+        })
+        document.querySelectorAll('.screenshot-content').forEach(c => c.classList.remove('active'))
+
+        tab.classList.add('active')
+        tab.setAttribute('aria-selected', 'true')
+        const target = document.getElementById('tab-' + (tab as HTMLElement).dataset.tab)
+        if (target) target.classList.add('active')
+      })
+    })
+  }
+
+  initScreenshotTabs()
+</script>

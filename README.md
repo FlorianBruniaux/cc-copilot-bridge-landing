@@ -45,7 +45,7 @@ Pushes to `main` automatically deploy to GitHub Pages via `.github/workflows/sta
 ## Related
 
 - [cc-copilot-bridge](https://github.com/FlorianBruniaux/cc-copilot-bridge) - Main project
-- [Claude Code Ultimate Guide](https://cc.bruniaux.com/) - Comprehensive Claude Code documentation
+- [Claude Code Ultimate Guide](https://cc.bruniaux.com/) - Complete Claude Code documentation
 
 ## License
 

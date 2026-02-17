@@ -1,0 +1,51 @@
+---
+// 6 feature cards
+const features = [
+  {
+    icon: '&#x26A1;',
+    title: 'Instant Switching',
+    desc: 'Switch providers with 3 characters. No config changes, no restarts, no environment juggling.',
+  },
+  {
+    icon: '&#x1F3A8;',
+    title: '25+ Models',
+    desc: 'Access Claude, GPT-4.1, GPT-5, Gemini, and local models (Devstral 68% SWE-bench, Qwen3 69.6%, Granite4) through a unified interface.',
+  },
+  {
+    icon: '&#x1F527;',
+    title: 'MCP Profiles',
+    desc: 'Auto-generated compatibility profiles exclude problematic MCP servers for strict models like GPT-4.1.',
+  },
+  {
+    icon: '&#x1F194;',
+    title: 'Model Identity',
+    desc: 'System prompt injection ensures GPT and Gemini correctly identify themselves when running through Claude Code.',
+  },
+  {
+    icon: '&#x1FA7A;',
+    title: 'Health Checks',
+    desc: 'Fail-fast validation. Get clear error messages when copilot-api or Ollama isn\'t running.',
+  },
+  {
+    icon: '&#x1F4DD;',
+    title: 'Session Logging',
+    desc: 'Full audit trail in ~/.claude/claude-switch.log. Track provider, model, duration, and exit status.',
+  },
+]
+---
+
+<section id="features" class="section section--alt">
+  <div class="container">
+    <h2 class="section-title">Features</h2>
+
+    <div class="features-grid">
+      {features.map((f) => (
+        <div class="feature-card">
+          <span class="feature-icon" set:html={f.icon} />
+          <h3>{f.title}</h3>
+          <p>{f.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

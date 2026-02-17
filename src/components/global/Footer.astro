@@ -1,0 +1,79 @@
+---
+const currentYear = new Date().getFullYear()
+
+const footerLinks = {
+  project: [
+    { href: 'https://github.com/FlorianBruniaux/cc-copilot-bridge', label: 'GitHub Repo', external: true },
+    { href: 'https://github.com/FlorianBruniaux/cc-copilot-bridge/blob/main/docs/README.md', label: 'Documentation', external: true },
+    { href: 'https://github.com/FlorianBruniaux/cc-copilot-bridge/blob/main/QUICKSTART.md', label: 'Quick Start', external: true },
+    { href: 'https://github.com/FlorianBruniaux/cc-copilot-bridge/blob/main/docs/SECURITY.md', label: 'Security Guide', external: true },
+  ],
+  resources: [
+    { href: '/#providers', label: 'Providers' },
+    { href: '/#features', label: 'Features' },
+    { href: '/#pricing', label: 'Copilot Quotas' },
+    { href: '/#install', label: 'Install' },
+    { href: '/#faq', label: 'FAQ' },
+  ],
+  ecosystem: [
+    { href: 'https://cc.bruniaux.com/', label: 'Claude Code Guide', external: true },
+    { href: 'https://ccboard.bruniaux.com/', label: 'ccboard', external: true },
+    { href: 'https://cowork.bruniaux.com/', label: 'Cowork Guide', external: true },
+    { href: 'https://www.rtk-ai.app/', label: 'RTK', external: true },
+    { href: 'https://florian.bruniaux.com/', label: 'Blog & Portfolio', external: true },
+  ],
+}
+---
+
+<footer class="border-t border-border mt-24 bg-background-secondary">
+  <div class="mx-auto max-w-content px-4 py-12">
+    <!-- Footer Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+      <!-- Brand -->
+      <div class="col-span-2 md:col-span-1">
+        <a href="/" class="flex items-center gap-2 mb-3 hover:opacity-80 transition-opacity">
+          <span class="font-mono text-accent font-bold">&gt;_</span>
+          <span class="text-text-primary font-semibold text-sm">cc-copilot-bridge</span>
+        </a>
+        <p class="text-text-muted text-sm leading-relaxed">
+          Multi-provider routing for Claude Code CLI.
+        </p>
+      </div>
+
+      {Object.entries(footerLinks).map(([section, links]) => (
+        <div>
+          <h3 class="text-sm font-semibold text-text-primary mb-3 uppercase tracking-wide">
+            {section.charAt(0).toUpperCase() + section.slice(1)}
+          </h3>
+          <ul class="space-y-2">
+            {links.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-sm text-text-muted hover:text-accent transition-colors"
+                  target={link.external ? '_blank' : undefined}
+                  rel={link.external ? 'noopener noreferrer' : undefined}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-border pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p class="text-xs text-text-muted">
+        <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-hover transition-colors">MIT License</a> &bull;
+        v1.5.3 &bull;
+        Made by <a href="https://florian.bruniaux.com/" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-hover transition-colors">Florian BRUNIAUX</a>
+      </p>
+      <p class="text-xs text-text-muted">
+        Built with <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-hover transition-colors">Astro</a> &middot;
+        Deployed on <a href="https://pages.github.com" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-hover transition-colors">GitHub Pages</a>
+      </p>
+    </div>
+  </div>
+</footer>

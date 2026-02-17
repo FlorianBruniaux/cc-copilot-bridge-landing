@@ -1,0 +1,153 @@
+---
+// Quick Start / Install section with code blocks
+---
+
+<section id="install" class="section">
+  <div class="container">
+    <h2 class="section-title">Quick Start</h2>
+
+    <div class="install-hero">
+      <p class="install-intro">Get started in 30 seconds:</p>
+
+      <h3>Homebrew (Recommended)</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-filename">bash</span>
+          <button class="copy-btn" data-copy aria-label="Copy code">Copy</button>
+        </div>
+        <pre><code>brew tap FlorianBruniaux/tap
+brew install cc-copilot-bridge
+eval "$(claude-switch --shell-config)"</code></pre>
+      </div>
+
+      <h3>Script Install (Alternative)</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-filename">bash</span>
+          <button class="copy-btn" data-copy aria-label="Copy code">Copy</button>
+        </div>
+        <pre><code>curl -fsSL https://raw.githubusercontent.com/FlorianBruniaux/cc-copilot-bridge/main/install.sh | bash
+source ~/.zshrc  # or ~/.bashrc</code></pre>
+      </div>
+
+      <p class="install-note">
+        <strong>Also available:</strong> Debian/Ubuntu (.deb), RHEL/Fedora (.rpm) &mdash;
+        <a href="https://github.com/FlorianBruniaux/cc-copilot-bridge/blob/main/docs/PACKAGE-MANAGERS.md" target="_blank" rel="noopener noreferrer">See all install options &rarr;</a>
+      </p>
+    </div>
+
+    <div class="install-steps">
+      <h3>Setup Aliases</h3>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-filename">bash</span>
+          <button class="copy-btn" data-copy aria-label="Copy code">Copy</button>
+        </div>
+        <pre><code># Add to ~/.bash_aliases or ~/.zshrc
+alias ccd='claude-switch direct'      # Anthropic API (paid)
+alias ccc='claude-switch copilot'     # GitHub Copilot (quota)
+alias cco='claude-switch ollama'      # Ollama Local (offline)
+alias ccs='claude-switch status'      # Check all providers
+
+# Model shortcuts
+alias ccc-gpt='COPILOT_MODEL=gpt-4.1 claude-switch copilot'
+alias ccc-opus='COPILOT_MODEL=claude-opus-4.5 claude-switch copilot'</code></pre>
+      </div>
+    </div>
+
+    <div class="install-usage">
+      <h3>First Usage</h3>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span class="code-filename">bash</span>
+          <button class="copy-btn" data-copy aria-label="Copy code">Copy</button>
+        </div>
+        <pre><code># Terminal 1: Start copilot-api (keep running)
+copilot-api start
+# or start the unified fork
+scripts/launch-unified-fork.sh
+
+# Terminal 2: Use Copilot (uses your subscription)
+ccc
+
+# Switch models on-the-fly
+COPILOT_MODEL=gpt-4.1 ccc         # GPT-4.1 (free!)
+COPILOT_MODEL=claude-opus-4.5 ccc # Opus (3x quota)
+
+# Check provider status
+ccs</code></pre>
+      </div>
+
+      <p class="install-note">
+        <strong>Note:</strong> <code>copilot-api</code> (or the unified fork via <code>scripts/launch-unified-fork.sh</code>) must be running for Copilot mode. Direct (<code>ccd</code>) and Ollama (<code>cco</code>) don't need it.
+      </p>
+    </div>
+
+    <p class="install-more">
+      <a href="https://github.com/FlorianBruniaux/cc-copilot-bridge/blob/main/QUICKSTART.md" target="_blank" rel="noopener noreferrer">Full installation guide &rarr;</a>
+    </p>
+  </div>
+</section>
+
+<style>
+  .install-hero {
+    max-width: 800px;
+    margin: 0 auto var(--space-2xl);
+  }
+
+  .install-intro {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+  }
+
+  .install-hero h3,
+  .install-steps h3,
+  .install-usage h3 {
+    font-size: 1.1rem;
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-md);
+    color: var(--text-secondary);
+  }
+
+  .install-steps,
+  .install-usage {
+    max-width: 800px;
+    margin: 0 auto var(--space-xl);
+  }
+
+  .install-note {
+    margin-top: var(--space-lg);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .install-more {
+    text-align: center;
+    margin-top: var(--space-xl);
+  }
+</style>
+
+<script>
+  function initCopyButtons() {
+    document.querySelectorAll('[data-copy]').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const codeBlock = btn.closest('.code-block')
+        const code = codeBlock?.querySelector('code')?.textContent
+        if (!code) return
+
+        try {
+          await navigator.clipboard.writeText(code)
+          btn.textContent = 'Copied!'
+          setTimeout(() => { btn.textContent = 'Copy' }, 2000)
+        } catch (err) {
+          console.error('Copy failed:', err)
+        }
+      })
+    })
+  }
+
+  initCopyButtons()
+</script>

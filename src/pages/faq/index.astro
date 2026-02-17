@@ -1,0 +1,389 @@
+---
+import Layout from '../../layouts/Layout.astro'
+
+const title = 'cc-copilot-bridge FAQ: Legal, Pricing, Providers & Models'
+const description = 'Answers to the most common questions about cc-copilot-bridge: legal status, costs by provider, copilot-api setup, available models (Claude, GPT-4.1, Devstral), and Ollama offline mode.'
+
+const jsonLd = [
+  {
+    "@type": "WebPage",
+    "name": title,
+    "description": description,
+    "url": "https://ccbridge.bruniaux.com/faq/",
+    "datePublished": "2025-01-01",
+    "dateModified": "2026-02-17",
+    "inLanguage": "en",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "cc-copilot-bridge",
+      "url": "https://ccbridge.bruniaux.com/"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Florian Bruniaux",
+      "url": "https://github.com/FlorianBruniaux"
+    },
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [".faq-item summary", ".faq-item .faq-answer"]
+    }
+  },
+  {
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is cc-copilot-bridge legal to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Using copilot-api (the Copilot provider) may violate GitHub's Terms of Service. The tool itself is MIT licensed, but how you use it matters. For risk-free usage, use the Anthropic Direct (ccd) or Ollama (cco) providers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does cc-copilot-bridge cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Depends on the provider: Copilot uses your existing subscription quota. Anthropic Direct is pay-per-token ($0.015-$75/1M tokens). Ollama is free (local compute)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is GPT-4.1 free on Copilot?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GitHub assigns a 0x multiplier to GPT-4.1, GPT-4o, and GPT-5-mini on paid plans. This means they don't consume your premium request quota. Use them for routine tasks to save quota for Claude/Opus."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Ollama work offline?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, 100%. Ollama runs entirely on your machine with no internet required. Perfect for proprietary code, air-gapped environments, and privacy-first workflows."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is copilot-api?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "copilot-api is a community project that reverse-engineers GitHub Copilot's API. It's the bridge that makes the Copilot provider possible. cc-copilot-bridge is a wrapper that makes it easy to use with Claude Code CLI."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I start copilot-api?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Terminal 1: run 'copilot-api start' and keep it running. Terminal 2: use 'ccc' (or ccc-opus, ccc-gpt, etc.) for Copilot mode. For Codex models (gpt-5.2-codex), use the unified fork: run 'ccunified' or the launch-unified-fork.sh script."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which models are available in cc-copilot-bridge?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Anthropic: Claude Opus, Sonnet, Haiku (4.5). Copilot: Claude family, GPT-4.1/5, Gemini 2.5 Pro. Ollama (Local): Devstral-small-2 (68% SWE-bench), Granite4 (62%), Qwen3-coder (69.6%), and any model you install."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why Devstral over Qwen3-coder for Ollama?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Qwen3-coder has 1.6% higher SWE-bench (69.6% vs 68%), but Devstral is more reliable in practice due to its native agentic architecture design. High benchmarks don't always mean reliability in real-world usage."
+        }
+      }
+    ]
+  }
+]
+---
+
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <header class="page-hero">
+    <div class="container">
+      <h1>cc-copilot-bridge FAQ</h1>
+      <p class="tagline">Everything you need to know about legal status, costs, providers, and model selection.</p>
+    </div>
+  </header>
+
+  <div class="container">
+  <div class="faq-page">
+
+    <!-- Legal & Risk -->
+    <section class="faq-section">
+      <h2 class="faq-section-title">Legal & Risk</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Is cc-copilot-bridge legal to use?</summary>
+          <div class="faq-answer">
+            <p>Using <a href="https://github.com/ericc-ch/copilot-api" target="_blank" rel="noopener noreferrer">copilot-api</a> (the Copilot provider) <strong>may violate GitHub's Terms of Service</strong>. The tool itself is MIT licensed, but how you use it matters.</p>
+            <p>For risk-free usage, use the <strong>Anthropic Direct</strong> (<code>ccd</code>) or <strong>Ollama</strong> (<code>cco</code>) providers — both operate within their respective Terms of Service.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Pricing & Costs -->
+    <section class="faq-section">
+      <h2 class="faq-section-title">Pricing & Costs</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>How much does cc-copilot-bridge cost?</summary>
+          <div class="faq-answer">
+            <p>Depends on the provider:</p>
+            <ul>
+              <li><strong>Copilot:</strong> uses your existing subscription quota (GitHub Copilot Pro+ at $10/month)</li>
+              <li><strong>Anthropic Direct:</strong> pay-per-token ($0.015–$75/1M tokens depending on model)</li>
+              <li><strong>Ollama:</strong> free (local compute only)</li>
+            </ul>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>Why is GPT-4.1 free on Copilot?</summary>
+          <div class="faq-answer">
+            <p>GitHub assigns a <strong>0x multiplier</strong> to GPT-4.1, GPT-4o, and GPT-5-mini on paid plans. This means they don't consume your premium request quota.</p>
+            <p>Use them for routine tasks (boilerplate, simple refactors) to preserve your premium quota for Claude Opus or other higher-cost models.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Getting Started -->
+    <section class="faq-section">
+      <h2 class="faq-section-title">Getting Started</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What is copilot-api?</summary>
+          <div class="faq-answer">
+            <p><a href="https://github.com/ericc-ch/copilot-api" target="_blank" rel="noopener noreferrer">copilot-api</a> is a community project that reverse-engineers GitHub Copilot's API. It's the bridge that makes the Copilot provider possible.</p>
+            <p>cc-copilot-bridge is a wrapper that makes it easy to use with Claude Code CLI — managing the proxy lifecycle, aliases, and model routing automatically.</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>How do I start copilot-api?</summary>
+          <div class="faq-answer">
+            <p><strong>Terminal 1:</strong> Keep this running</p>
+            <pre><code>copilot-api start</code></pre>
+            <p><strong>Terminal 2:</strong> Use Copilot mode</p>
+            <pre><code>ccc  # or ccc-opus, ccc-gpt, etc.</code></pre>
+            <p><strong>Alternative:</strong> For Codex models (gpt-5.2-codex), use the unified fork:</p>
+            <pre><code>ccunified  # or ~/path/to/cc-copilot-bridge/scripts/launch-unified-fork.sh</code></pre>
+            <p>&#x1F4A1; <strong>Tip:</strong> Check if copilot-api is running: <code>ccs</code> (shows status of all providers)</p>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>Does Ollama work offline?</summary>
+          <div class="faq-answer">
+            <p>Yes, 100%. Ollama runs entirely on your machine with no internet required. Perfect for:</p>
+            <ul>
+              <li>Proprietary code you can't send to external APIs</li>
+              <li>Air-gapped environments</li>
+              <li>Privacy-first workflows</li>
+            </ul>
+            <p>Use alias <code>cco</code> to start Claude Code with your local Ollama instance.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Providers & Models -->
+    <section class="faq-section">
+      <h2 class="faq-section-title">Providers & Models</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Which models are available?</summary>
+          <div class="faq-answer">
+            <p><strong>Anthropic Direct:</strong> Claude Opus 4.5, Sonnet 4.5, Haiku 4.5</p>
+            <p><strong>Copilot:</strong> Claude family, GPT-4.1/5, Gemini 2.5 Pro</p>
+            <p><strong>Ollama (Local):</strong></p>
+            <ul>
+              <li>Devstral-small-2 (68% SWE-bench — best agentic coding)</li>
+              <li>Granite4 (62%, excellent long context)</li>
+              <li>Qwen3-coder (69.6%, needs template config)</li>
+              <li>Any model you install via <code>ollama pull</code></li>
+            </ul>
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>Why Devstral over Qwen3-coder for Ollama?</summary>
+          <div class="faq-answer">
+            <p>Qwen3-coder has 1.6% higher SWE-bench (69.6% vs 68%), but Devstral is more reliable in practice:</p>
+            <ul>
+              <li><strong>Architecture:</strong> Devstral = native agentic design vs Qwen3 = post-training bolt-on</li>
+              <li><strong>Practice:</strong> Devstral = "best agentic" confirmed vs Qwen3 = "needs template work"</li>
+              <li><strong>Precedent:</strong> High benchmarks &ne; reliability (Llama3.1:8b = 68% HumanEval but 15% SWE-bench)</li>
+            </ul>
+            <p>SWE-bench measures real GitHub issue resolution with tool calling, not just code completion. Devstral wins on practical reliability.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </div>
+  </div>
+
+  <style>
+    /* ── FAQ page wrapper ── */
+    .faq-page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: var(--space-2xl) 0 var(--space-3xl);
+    }
+
+    /* ── Section grouping ── */
+    .faq-section {
+      margin-bottom: var(--space-2xl);
+    }
+
+    .faq-section:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── Section heading — accent pill style ── */
+    .faq-section-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      background: transparent;
+      border: none;
+      border-left: 3px solid var(--accent);
+      padding: 0 0 0 var(--space-sm);
+      margin: 0 0 var(--space-lg);
+      line-height: 1.4;
+    }
+
+    /* ── Accordion item ── */
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius);
+      margin-bottom: var(--space-sm);
+      overflow: hidden;
+      background: var(--surface-elevated);
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .faq-item:hover {
+      border-color: var(--border-light);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .faq-item[open] {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* ── Summary trigger ── */
+    .faq-item summary {
+      padding: var(--space-md) var(--space-lg);
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 1rem;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-md);
+      color: var(--text-primary);
+      user-select: none;
+      transition: background-color var(--transition-fast);
+    }
+
+    .faq-item summary:hover {
+      background-color: var(--bg-tertiary);
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    /* Chevron indicator */
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.25rem;
+      line-height: 1;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      transition: transform var(--transition-fast), color var(--transition-fast);
+    }
+
+    .faq-item[open] summary::after {
+      transform: rotate(45deg);
+      color: var(--accent);
+    }
+
+    .faq-item[open] summary {
+      border-bottom: 1px solid var(--border);
+      background-color: var(--bg-tertiary);
+    }
+
+    /* ── Answer body ── */
+    .faq-answer {
+      padding: var(--space-md) var(--space-lg) var(--space-lg);
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .faq-answer p {
+      margin-bottom: var(--space-sm);
+    }
+
+    .faq-answer p:last-child {
+      margin-bottom: 0;
+    }
+
+    .faq-answer pre {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      padding: var(--space-md);
+      border-radius: var(--border-radius);
+      margin: var(--space-sm) 0;
+      overflow-x: auto;
+      font-size: 0.875rem;
+    }
+
+    .faq-answer pre code {
+      background: none;
+      padding: 0;
+    }
+
+    .faq-answer ul {
+      list-style: disc;
+      padding-left: var(--space-xl);
+      margin: var(--space-sm) 0;
+    }
+
+    .faq-answer li {
+      margin-bottom: var(--space-xs);
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      .faq-page {
+        padding: var(--space-xl) 0 var(--space-2xl);
+      }
+
+      .faq-item summary {
+        padding: var(--space-md);
+        font-size: 0.9375rem;
+      }
+
+      .faq-answer {
+        padding: var(--space-md) var(--space-md) var(--space-lg);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .faq-section-title {
+        font-size: 0.7rem;
+      }
+
+      .faq-item summary {
+        padding: var(--space-sm) var(--space-md);
+      }
+    }
+  </style>
+</Layout>

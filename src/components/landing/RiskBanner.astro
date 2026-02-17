@@ -1,0 +1,60 @@
+---
+// Risk Banner - Above fold warning about copilot-api ToS risk
+// MUST remain prominent per project requirements
+---
+
+<div class="risk-banner" role="alert">
+  <div class="container">
+    <span class="risk-icon">&#x26A0;&#xFE0F;</span>
+    <span class="risk-text">
+      <strong>Risk Disclosure:</strong> Uses copilot-api (reverse-engineered). Not officially supported. May violate GitHub ToS.
+    </span>
+    <a href="#risk-disclosure" class="risk-link">Learn more &rarr;</a>
+  </div>
+</div>
+
+<style>
+  .risk-banner {
+    background: linear-gradient(90deg, rgba(234, 179, 8, 0.12), rgba(239, 68, 68, 0.12));
+    border-bottom: 1px solid var(--status-warning);
+    padding: var(--space-sm) 0;
+  }
+
+  .risk-banner .container {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  .risk-icon {
+    font-size: 1.25rem;
+  }
+
+  .risk-text {
+    flex: 1;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+  }
+
+  .risk-text strong {
+    color: var(--status-warning);
+  }
+
+  .risk-link {
+    color: var(--status-warning);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .risk-link:hover {
+    color: var(--status-danger);
+  }
+
+  @media (max-width: 768px) {
+    .risk-banner .container {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

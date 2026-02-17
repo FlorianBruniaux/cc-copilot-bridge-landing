@@ -1,0 +1,131 @@
+---
+// Risk Disclosure section - FULL CONTENT MUST BE KEPT
+---
+
+<section id="risk-disclosure" class="section section--alt">
+  <div class="container">
+    <h2 class="section-title">&#x26A0;&#xFE0F; Risk Disclosure</h2>
+
+    <div class="risk-disclosure">
+      <h3>Terms of Service Considerations</h3>
+      <p>This project uses <a href="https://github.com/ericc-ch/copilot-api" target="_blank" rel="noopener noreferrer">copilot-api</a>, a community tool that reverse-engineers GitHub Copilot's API. Start the proxy first: <code>copilot-api start</code> or <code>scripts/launch-unified-fork.sh</code>.</p>
+
+      <h4>Important Disclaimers</h4>
+      <ul>
+        <li><strong>Not officially supported:</strong> copilot-api is not endorsed by GitHub, Microsoft, Anthropic, or any AI provider</li>
+        <li><strong>ToS risk:</strong> Using third-party proxies to access Copilot may violate GitHub Copilot Terms of Service</li>
+        <li><strong>Account suspension:</strong> GitHub reserves the right to suspend accounts for ToS violations without prior notice</li>
+        <li><strong>API changes:</strong> This tool may stop working at any time if providers change their APIs</li>
+        <li><strong>No guarantees:</strong> The authors provide no warranty and accept no liability for account suspension</li>
+      </ul>
+
+      <h4>Recommendations</h4>
+      <div class="table-wrapper">
+        <table class="risk-table">
+          <thead>
+            <tr>
+              <th>Use Case</th>
+              <th>Recommended Provider</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Production code</td>
+              <td>Anthropic Direct (<code>ccd</code>) - Official API, no ToS risk</td>
+            </tr>
+            <tr>
+              <td>Sensitive/proprietary code</td>
+              <td>Ollama Local (<code>cco</code>) - 100% offline, no cloud</td>
+            </tr>
+            <tr>
+              <td>Daily development</td>
+              <td>Copilot (<code>ccc</code>) - Understand the risks first</td>
+            </tr>
+            <tr>
+              <td>Risk-averse users</td>
+              <td>Avoid copilot-api entirely</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="security-docs-link">
+        &#x1F4D6; <strong>Security Guide:</strong>
+        <a href="https://github.com/FlorianBruniaux/cc-copilot-bridge/blob/main/docs/SECURITY.md" target="_blank" rel="noopener noreferrer">
+          Full documentation
+        </a> &mdash; Ollama vulnerabilities, air-gapped protocols, compliance (GDPR, HIPAA, PCI-DSS)
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .risk-disclosure {
+    background-color: rgba(239, 68, 68, 0.04);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-xl);
+  }
+
+  .risk-disclosure h3 {
+    color: var(--status-danger);
+    margin-bottom: var(--space-md);
+  }
+
+  .risk-disclosure h4 {
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-sm);
+    color: var(--text-primary);
+  }
+
+  .risk-disclosure p {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+  }
+
+  .risk-disclosure ul {
+    list-style: disc;
+    padding-left: var(--space-xl);
+    color: var(--text-secondary);
+  }
+
+  .risk-disclosure li {
+    margin-bottom: var(--space-sm);
+  }
+
+  .table-wrapper {
+    overflow-x: auto;
+    margin-bottom: var(--space-lg);
+  }
+
+  .risk-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--space-md) 0;
+  }
+
+  .risk-table th,
+  .risk-table td {
+    padding: var(--space-md);
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .risk-table th {
+    background-color: var(--bg-secondary);
+    font-weight: 600;
+  }
+
+  .risk-table tr:hover {
+    background-color: var(--bg-secondary);
+  }
+
+  .security-docs-link {
+    margin-top: var(--space-lg);
+    padding: var(--space-md);
+    background-color: var(--bg-tertiary);
+    border-radius: var(--border-radius);
+    border-left: 3px solid var(--accent);
+    color: var(--text-secondary);
+  }
+</style>

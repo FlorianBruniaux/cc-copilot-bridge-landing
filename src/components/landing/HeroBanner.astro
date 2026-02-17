@@ -1,0 +1,106 @@
+---
+// Hero section with badges, stats, CTAs
+---
+
+<section class="section">
+  <div class="container hero-content">
+    <!-- Badges -->
+    <div class="hero-badges">
+      <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT License" width="78" height="20" />
+      <img src="https://img.shields.io/github/v/tag/FlorianBruniaux/cc-copilot-bridge?label=version" alt="Version" width="90" height="20" />
+      <img src="https://img.shields.io/badge/Platform-macOS%20%7C%20Linux-blue.svg" alt="Platform" width="130" height="20" />
+      <img src="https://img.shields.io/badge/Shell-Bash-green.svg" alt="Bash" width="80" height="20" />
+    </div>
+
+    <!-- Title -->
+    <h1 class="hero-title">Multi-Provider Router for Claude Code</h1>
+
+    <!-- Tagline -->
+    <p class="hero-tagline">
+      Switch between Anthropic, GitHub Copilot, or Ollama with 3 characters.
+      Use your Copilot subscription with Claude Code CLI.
+    </p>
+
+    <!-- Stats -->
+    <div class="hero-stats">
+      <span class="stat"><strong>3</strong> providers</span>
+      <span class="stat"><strong>25+</strong> models</span>
+      <span class="stat"><strong>30s</strong> install</span>
+    </div>
+
+    <!-- CTAs -->
+    <div class="hero-ctas">
+      <a href="#install" class="btn btn-primary">Quick Start</a>
+      <a href="https://github.com/FlorianBruniaux/cc-copilot-bridge" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-content {
+    text-align: center;
+  }
+
+  .hero-badges {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+    flex-wrap: wrap;
+  }
+
+  .hero-badges img {
+    height: 20px;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    margin-bottom: var(--space-md);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+  }
+
+  .hero-tagline {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto var(--space-lg);
+    line-height: 1.6;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-xl);
+  }
+
+  .hero-stats .stat {
+    color: var(--text-secondary);
+  }
+
+  .hero-stats strong {
+    color: var(--accent);
+  }
+
+  .hero-ctas {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 480px) {
+    .hero-stats {
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .hero-ctas {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
