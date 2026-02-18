@@ -93,7 +93,7 @@ const faqEntries: SearchEntry[] = [
     title: 'Is this legal to use?',
     keywords: 'legal tos terms service risk copilot-api violation',
     category: 'FAQ',
-    url: '/#faq',
+    url: '/faq/',
     source: 'landing',
   },
   {
@@ -101,7 +101,7 @@ const faqEntries: SearchEntry[] = [
     title: 'How much does it cost?',
     keywords: 'cost price pricing free paid subscription token quota',
     category: 'FAQ',
-    url: '/#faq',
+    url: '/faq/',
     source: 'landing',
   },
   {
@@ -109,7 +109,7 @@ const faqEntries: SearchEntry[] = [
     title: 'Why is GPT-4.1 free on Copilot?',
     keywords: 'gpt free multiplier 0x unlimited quota premium requests',
     category: 'FAQ',
-    url: '/#faq',
+    url: '/faq/',
     source: 'landing',
   },
   {
@@ -117,7 +117,7 @@ const faqEntries: SearchEntry[] = [
     title: 'Does Ollama work offline?',
     keywords: 'ollama offline local private air-gapped no internet',
     category: 'FAQ',
-    url: '/#faq',
+    url: '/faq/',
     source: 'landing',
   },
   {
@@ -125,7 +125,7 @@ const faqEntries: SearchEntry[] = [
     title: 'What is copilot-api?',
     keywords: 'copilot-api reverse engineer proxy bridge github',
     category: 'FAQ',
-    url: '/#faq',
+    url: '/faq/',
     source: 'landing',
   },
   {
@@ -133,7 +133,7 @@ const faqEntries: SearchEntry[] = [
     title: 'Which models are available?',
     keywords: 'models available claude opus sonnet haiku gpt gemini devstral granite',
     category: 'FAQ',
-    url: '/#faq',
+    url: '/faq/',
     source: 'landing',
   },
 ]
@@ -169,6 +169,38 @@ const docEntries: SearchEntry[] = [
     keywords: 'architecture diagram how it works routing provider bridge',
     category: 'Docs',
     url: '/#architecture',
+    source: 'landing',
+  },
+  {
+    id: 'd5',
+    title: 'Screenshots Gallery',
+    keywords: 'screenshots gallery preview ui interface visual terminal demo',
+    category: 'Docs',
+    url: '/#screenshots',
+    source: 'landing',
+  },
+  {
+    id: 'd6',
+    title: 'Related Projects',
+    keywords: 'related projects ecosystem claude code guide cowork rtk ccboard',
+    category: 'Docs',
+    url: '/#related',
+    source: 'landing',
+  },
+  {
+    id: 'd7',
+    title: 'FAQ Page',
+    keywords: 'faq page frequently asked questions detailed full legal pricing models',
+    category: 'Pages',
+    url: '/faq/',
+    source: 'landing',
+  },
+  {
+    id: 'd8',
+    title: 'Hero: What is cc-copilot-bridge?',
+    keywords: 'overview what is cc-copilot-bridge introduction hero summary claude code provider',
+    category: 'Pages',
+    url: '/',
     source: 'landing',
   },
 ]
