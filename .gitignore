@@ -9,3 +9,16 @@ Thumbs.db
 # Build
 node_modules/
 dist/
+
+# Astro
+.astro/
+
+# Next.js leftovers (migrated to Astro)
+.next/
+next-env.d.ts
+
+# Migration artifacts
+*.legacy
+
+# Claude local settings (machine-specific)
+.claude/settings.local.json
